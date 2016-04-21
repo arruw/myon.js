@@ -106,7 +106,6 @@ function($scope) {
         var prefixCurr = renderPrefix(depth);
         if(!fromKey) render += prefixCurr;
         render += '<span class="json-curly-brackets">{</span></div><div class="json-row">';
-        console.log(object);
         for(var i = 0; i < Object.keys(object).length; i++) {
             var key = Object.keys(object)[i];
             render += prefixNext + '<span class="json-key">\"' + key + '\"</span><span class="json-colon">:</span> ';
