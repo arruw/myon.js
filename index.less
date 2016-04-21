@@ -1,0 +1,72 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #f5f5f5;
+  color: red;
+}
+
+
+
+@color-background: rgba(30, 30, 30, 1);
+@color-background-hover: rgba(40, 40, 40, 1);
+@color-foreground: rgba(212, 212, 212, 1);
+@color-boolean: rgba(86, 156, 214, 1);
+@color-number: rgba(181, 206, 186, 1);
+@color-string: rgba(206, 145, 120, 1);
+@color-key: rgba(156, 220, 254, 1);
+
+body {
+    font-family: 'Source Code Pro';
+    background-color: @color-background;
+    color: @color-foreground;
+    line-height: 14px;
+    font-size: 14px;
+}
+
+.json {
+    font-family: 'Source Code Pro';
+    background-color: @color-background;
+    color: @color-foreground;
+    line-height: 14px;
+    font-size: 14px;
+    margin: 5px 0px;
+}
+
+.json-number {
+    color: @color-number;
+}
+
+.json-string {
+    color: @color-string;
+}
+
+.json-boolean,
+.json-null-or-undefined {
+    color: @color-boolean;
+}
+
+.json-url {
+    color: @color-string;
+}
+
+.json-key {
+    color: @color-key;
+}
+
+.json-row {
+    padding-left: 5px;
+}
+.json-row:hover {
+    background-color: @color-background-hover;
+    
+}
