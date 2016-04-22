@@ -44,6 +44,8 @@
     font-size: 14px;
     margin: 10px;  
     padding: 10px;
+    white-space: nowrap;
+    overflow-x: auto;
     
     .json-number {
         color: @color-number;
@@ -60,7 +62,7 @@
 
     .json-url {
         color: @color-url;
-        &:extend(.word-wrap);
+        // &:extend(.word-wrap);
         
         &:hover {
             color: @color-url-hover;
