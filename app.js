@@ -10,7 +10,7 @@ var app = angular.module('app', [])
             "Email": "matjaz.mav@gmail.com",
             "Twitter": "http://twitter.com/matjazmav",
             "Skype": "skype:live:matjaz.mav_1?chat",
-            // "LinkedIn": "https://si.linkedin.com/in/matjazmav",
+            "LinkedIn": "https://si.linkedin.com/in/matjazmav",
             "Mobile": null
         },
         "Hobies": [
@@ -19,7 +19,6 @@ var app = angular.module('app', [])
         ]
     };
     
-    var jsonHtml = myon.renderJson($scope.data);
-    $('#json').html(jsonHtml);
+    $('#json').html(myon.renderJson($scope.data, 2));
     
 }]);
