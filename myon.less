@@ -1,0 +1,88 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto+Mono);
+
+@color-background: rgba(30, 30, 30, 1);
+@color-background-hover: rgba(40, 40, 40, 1);
+@color-foreground: rgba(212, 212, 212, 1);
+
+@color-background-header-bar: rgba(51, 51, 51, 1);
+@color-foreground-header-bar: rgba(255, 255, 255, 1);
+@color-background-status-bar: rgba(0, 122, 204, 1);
+@color-foreground-status-bar: rgba(255, 255, 255, 1);
+
+@color-boolean: rgba(86, 156, 214, 1);
+@color-number: rgba(181, 206, 186, 1);
+@color-string: rgba(206, 145, 120, 1);
+@color-key: rgba(156, 220, 254, 1);
+@color-url: rgba(206, 145, 120, 1);
+@color-url-hover: rgba(78, 148, 206, 1);
+@color-line-number: rgba(90, 90, 90, 1);
+
+.no-select {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;                
+}
+
+.word-wrap {
+    white-space: -moz-pre-wrap;
+    white-space: -webkit-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    word-break: break-all;
+    white-space: normal;
+}
+
+.json {
+    font-family: 'Roboto Mono';
+    background-color: @color-background;
+    color: @color-foreground;
+    line-height: 20px;
+    font-size: 14px;
+    margin: 10px;  
+    padding: 10px;
+    
+    .json-number {
+        color: @color-number;
+    }
+
+    .json-string {
+        color: @color-string;
+    }
+
+    .json-boolean,
+    .json-null-or-undefined {
+        color: @color-boolean;
+    }
+
+    .json-url {
+        color: @color-url;
+        &:extend(.word-wrap);
+        
+        &:hover {
+            color: @color-url-hover;
+        }
+    }
+    
+    .json-key {
+        color: @color-key;
+    }
+    
+    .json-line-number {
+        color: @color-line-number;
+        &:extend(.no-select);
+        width: 5ex;
+        display: inline-block;
+        text-align: right;
+        margin-right: 10px;
+    }
+    
+    .json-row {
+        &:hover {
+            background-color: @color-background-hover;
+        }
+    }
+}
