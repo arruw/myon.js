@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto+Mono);
+
 @color-background: rgba(30, 30, 30, 1);
 @color-background-hover: rgba(40, 40, 40, 1);
 @color-foreground: rgba(212, 212, 212, 1);
@@ -12,17 +14,18 @@
 @color-string: rgba(206, 145, 120, 1);
 @color-key: rgba(156, 220, 254, 1);
 @color-url: rgba(206, 145, 120, 1);
-@color-url-hover: rgb(78, 148, 206, 1);
+@color-url-hover: rgba(78, 148, 206, 1);
+@color-line-number: rgba(90, 90, 90, 1);
 
 html {
     position: relative;
     min-height: 100%;
 }
 body {
-    font-family: 'Source Code Pro';
+    font-family: 'Roboto Mono';
     background-color: @color-background;
     color: @color-foreground;
-    line-height: 14px;
+    line-height: 20px;
     font-size: 14px;
     margin-bottom: 28px;
 }
@@ -43,55 +46,25 @@ body {
     line-height: 20px;
     background-color: @color-background-status-bar;
     color: @color-foreground-status-bar;
+    
+    a {
+        color: @color-foreground-status-bar;
+        &:hover {
+            color: @color-foreground-status-bar;
+        }
+    }
 }
 
-.noselect {
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;                   
-}
-
-.json {
-    font-family: 'Source Code Pro';
+pre {
+    border: 0px;
+    border-radius: 0px;
     background-color: @color-background;
     color: @color-foreground;
-    line-height: 14px;
+    
+    font-family: 'Roboto Mono';
+    background-color: @color-background;
+    color: @color-foreground;
+    line-height: 20px;
     font-size: 14px;
-    margin: 5px 0px;  
-    
-    .json-number {
-    color: @color-number;
-    }
-
-    .json-string {
-        color: @color-string;
-    }
-
-    .json-boolean,
-    .json-null-or-undefined {
-        color: @color-boolean;
-    }
-
-    .json-url {
-        color: @color-url;
-    }
-    
-    .json-url:hover {
-        color: @color-url-hover;
-    }
-
-    .json-key {
-        color: @color-key;
-    }
-
-    // .json-row {
-    //     padding-left: 5px;
-    // }
-    
-    // .json-row:hover {
-    //     background-color: @color-background-hover;
-    // }
+    margin-bottom: 28px;
 }
-
