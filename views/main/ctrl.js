@@ -9,8 +9,13 @@ function($scope) {
         "Contacts": {
             "Email": "matjaz.mav@gmail.com",
             "Twitter": "http://twitter.com/matjazmav",
+            "Skype": "skype:live:matjaz.mav_1?chat",
             "Mobile": null
-        }
+        },
+        "Hobies": [
+            "Programing",
+            "Running"
+        ]
     }
     
     var root = $('#json');
@@ -35,6 +40,12 @@ function($scope) {
             return renderNumber(object);
         } else if(isBoolean(object)) {
             return renderBoolean(object);
+        } else if(isEmail(object)) {
+            return renderEmail(object);
+        // } else if(isImageUrl(object)) {
+        //     return renderImageUrl(object);
+        } else if(isSkypeUrl(object)) {
+            return renderSkypeUrl(object);
         } else if(isUrl(object)) {
             return renderUrl(object);
         } else if(isString(object)) {
@@ -59,6 +70,14 @@ function($scope) {
     function isBoolean(object) {
         return typeof(object) === 'boolean';
     };
+    // function isImageUrl(object) {
+    //     var imageUrlPatern = new RegExp(/.(jpg|jpeg|png|gif)$/i);
+    //     return imageUrlPatern.test(object) && isUrl(object);
+    // };
+    function isSkypeUrl(object) {
+        var skypeUrlPatern = new RegExp(/^skype:/i);
+        return skypeUrlPatern.test(object) && isUrl(object);
+    };
     function isUrl(object) {
         try {
             var url = new URL(object);
@@ -66,6 +85,10 @@ function($scope) {
         } catch(e) {
             return false;
         }
+    };
+    function isEmail(object) {
+        var emailPatter = new RegExp(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/i);
+        return emailPatter.test(object);  
     };
     function isString(object) {
         return typeof(object) === 'string';
@@ -82,7 +105,7 @@ function($scope) {
         return '<span class="json-null-or-undefined">null</span>';
     }
     function renderArray(object, depth, fromKey, maxDepth) {
-        var render = '<span class="json-array">';
+        var render = '';//'<span class="json-array">';
         var prefixNext = renderPrefix(depth + 1);
         var prefixCurr = renderPrefix(depth);
         if(!fromKey) render += prefixCurr;
@@ -97,11 +120,11 @@ function($scope) {
             }
         }  
         render += prefixCurr + '<span class="json-square-brackets">]</span>';
-        render += '</span>';
+        // render += '</span>';
         return render;
     };
     function renderObject(object, depth, fromKey, maxDepth) {
-        var render = '<span class="json-object">';
+        var render = '';//'<span class="json-object">';
         var prefixNext = renderPrefix(depth + 1);
         var prefixCurr = renderPrefix(depth);
         if(!fromKey) render += prefixCurr;
@@ -110,7 +133,8 @@ function($scope) {
             var key = Object.keys(object)[i];
             render += prefixNext + '<span class="json-key">\"' + key + '\"</span><span class="json-colon">:</span> ';
             var rendered = renderJsonHelper(object[key], depth + 1, true, maxDepth);
-            render += '<span class="json-value">' + rendered + '</span>';
+            // render += '<span class="json-value">' + rendered + '</span>';
+            render += rendered;
             if(i < Object.keys(object).length - 1) {
                 render += '<span class="json-comma">,</span></div><div class="json-row">';
             } else {
@@ -118,17 +142,27 @@ function($scope) {
             }
         }
         render += prefixCurr + '<span class="json-curly-brackets">}</span>';
-        render += '</span>';
+        // render += '</span>';
         return render;
-    };
-    function renderUrl(object) {
-        return '<a href="' + object + '" class="json-url" target="_blank">' + object + '</a>';
     };
     function renderNumber(object) {
         return '<span class="json-number">' + object + '</span>';
     };
     function renderBoolean(object) {
         return '<span class="json-boolean">' + object + '</span>';
+    };
+    // function renderImageUrl(object) {
+    //     return '<a href="' + object + '" class="json-url" target="_blank">\"' + object + '\"</a><img src="' + object + '" class="json-image" />';
+    // };
+    function renderSkypeUrl(object) {
+        var skypeUserName = object.replace('skype:', '').replace('?call', '').replace('?chat', '');
+        return '<span class="json-string">\"<a href="' + object + '" class="json-url" target="_blank">' + skypeUserName + '</a>\"</span>';
+    };
+    function renderUrl(object) {
+        return '<span class="json-string">\"<a href="' + object + '" class="json-url" target="_blank">' + object + '</a>\"</span>';
+    };
+    function renderEmail(object) {
+        return '<span class="json-string">\"<a href="mailto:' + object + '" class="json-url" target="_blank">' + object + '</a>\"</span>';
     };
     function renderString(object) {
         return '<span class="json-string">\"' + object + '\"</span>';
